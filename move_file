@@ -1,0 +1,15 @@
+import os
+import shutil
+directory = 'C:/research/RAG/data_sets/wiki/zh/articles/'
+new_dir = 'C:/research/RAG/data_sets/wiki/zh/file_list/'
+for root, dirnames, filenames in os.walk(directory):
+    for filename in filenames:
+        if filename.endswith('.html') \
+            and not 'User' in filename \
+            and not 'Image' in filename \
+            and not 'Talk' in filename \
+            and not 'Template' in filename :
+            fname = os.path.join(root, filename)
+            new_fname = os.path.join(new_dir,  filename)
+            shutil.move(fname, new_fname)
+            print(fname)
